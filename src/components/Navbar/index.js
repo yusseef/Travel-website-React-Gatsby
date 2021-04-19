@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {FaBars, Fatimes} from "react-icons/fa"
-import { IconContext } from "react-icon/lib"
+import { IconContext } from "react-icons/lib"
+import {Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon} from "./NavBarElements"
 
-const index = () => {
+const Navbar = () => {
     const[click, setClick] = useState(false)
     const[scroll, setScroll] = useState(false)
+
+    const handleClick = () => setClick(!click)
 
     const changeNav = () => {
         if(window.scrollY >= 80){
@@ -23,16 +26,19 @@ const index = () => {
         <>
             <IconContext.Provider value={{ color:"#141414"}}>
                 <Nav active={scroll} click={click}>
-                    <NavBarContainer>
+                    <NavbarContainer>
                         <NavLogo to="/">
                             <NavIcon/>
                                 EXPLOR
                         </NavLogo>
-                    </NavBarContainer>
+                        <MobileIcon onClick={handleClick}>
+                            {click ? <Fatimes/> : <FaBars/>}
+                        </MobileIcon>
+                    </NavbarContainer>
                 </Nav>
             </IconContext.Provider>
         </>
     )
 }
 
-export default index
+export default Navbar;
