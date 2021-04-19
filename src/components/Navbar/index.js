@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {FaBars, Fatimes} from "react-icons/fa"
+import {FaBars, FaTimes} from "react-icons/fa"
 import { IconContext } from "react-icons/lib"
-import {Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon} from "./NavBarElements"
+import {Nav, NavbarContainer, NavLogo, NavIcon, MobileIcon, NavMenu, NavItem, NavLinks} from "./NavBarElements"
 
 const Navbar = () => {
     const[click, setClick] = useState(false)
@@ -32,8 +32,20 @@ const Navbar = () => {
                                 EXPLOR
                         </NavLogo>
                         <MobileIcon onClick={handleClick}>
-                            {click ? <Fatimes/> : <FaBars/>}
+                            {click ? <FaTimes/> : <FaBars/>}
                         </MobileIcon>
+                        <NavMenu onClick={handleClick} click={click}>
+                            <NavItem>
+                                <NavLinks to ="/">Home</NavLinks>
+                            </NavItem>
+                            <NavItem>
+                                <NavLinks to ="/images">Images</NavLinks>
+                            </NavItem>
+                            <NavItem>
+                                <NavLinks to ="/destination">Destinations</NavLinks>
+                            </NavItem>
+
+                        </NavMenu>
                     </NavbarContainer>
                 </Nav>
             </IconContext.Provider>
